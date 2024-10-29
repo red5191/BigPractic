@@ -1,3 +1,13 @@
+students = [
+    {'name': 'Harry', 'grades': [80, 90, 78]},
+    {'name': 'Hermione', 'grades': [95, 90, 97]},
+    {'name': 'Ron', 'grades': [60, 70, 64]},
+    {'name': 'Draco', 'grades': [60, 75, 70]}
+]
+
+correct = ['да', 'нет']
+
+
 def calculate_average(grades):
     average = sum(grades) / len(grades)
     return average
@@ -22,7 +32,6 @@ def students_card_list():
 
 
 def delete_loser():
-    correct = ['да', 'нет']
     answer = input('Хотите избавиться от самого отстающего? ').lower()
     while answer not in correct:
         print('Пожалуйста используйте для ответа \"да\" или \"нет\"', '\n')
@@ -33,7 +42,6 @@ def delete_loser():
 
 
 def add_student():
-    correct = ['да', 'нет']
     answer = input('Хотите добавить нового студента? ').lower()
     while answer not in correct:
         print('Пожалуйста используйте для ответа \"да\" или \"нет\"')
@@ -51,15 +59,18 @@ def add_student():
         students_card_list()
 
 
-students = [
-    {'name': 'Harry', 'grades': [80, 90, 78]},
-    {'name': 'Hermione', 'grades': [95, 90, 97]},
-    {'name': 'Ron', 'grades': [60, 70, 64]},
-    {'name': 'Draco', 'grades': [60, 75, 70]}
-]
+print('Проверим список студентов')
 
 students_card_list()
 
-delete_loser()
-
-add_student()
+while True:
+    answer = input('Хотите изменить список? ')
+    while answer not in correct:
+        print('Пожалуйста используйте для ответа \"да\" или \"нет\"')
+        answer = input('Хотите изменить список? ').lower()
+    if answer == 'да':
+        delete_loser()
+        add_student()
+    else:
+        print('Список утвержден')
+        break
